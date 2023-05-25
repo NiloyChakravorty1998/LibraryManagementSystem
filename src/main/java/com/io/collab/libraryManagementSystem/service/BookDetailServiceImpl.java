@@ -44,7 +44,6 @@ public class BookDetailServiceImpl implements BookDetailsService {
         book.setGenre(bookDetails.getGenre());
         book.setBookDescription(bookDetails.getBookDescription());
         book.setIsAvailable(bookDetails.getIsAvailable());
-        bookRepo.deleteById(id);
         bookRepo.save(book);
         return book;
     }
