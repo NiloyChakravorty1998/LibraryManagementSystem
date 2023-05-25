@@ -23,4 +23,8 @@ public class BookDetails {
     private String bookDescription;
     private String genre;
     private String isAvailable;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserDetails userDetails;
 }
