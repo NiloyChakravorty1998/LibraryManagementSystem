@@ -20,8 +20,7 @@ public class BookDetails {
     private Long bookId;
     private String bookName;
     private String author;
-    private String bookDetails;
+    private String bookDescription;
     private String genre;
-    private boolean isAvailable;
-
+    private String isAvailable;
 }
