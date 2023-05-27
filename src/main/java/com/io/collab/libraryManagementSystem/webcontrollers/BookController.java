@@ -1,7 +1,9 @@
 package com.io.collab.libraryManagementSystem.webcontrollers;
 
 import com.io.collab.libraryManagementSystem.model.BookDetails;
-import com.io.collab.libraryManagementSystem.service.BookDetailServiceImpl;
+
+import com.io.collab.libraryManagementSystem.service.book.BookDetailServiceImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,10 +44,19 @@ public class BookController {
         return ResponseEntity.ok(bookDetails);
     }
 
+
     @GetMapping("/getAllBooks")
     public List<BookDetails> getAllBooks(){
         return bookDetailService.getAllBooks();
 
+    }
+    @GetMapping("/getAllBooksByAuthor={author}")
+    public List<BookDetails> getBooksByAuthor(@PathVariable("author") String author) {
+       return  bookDetailService.getBooksByAuthor(author, Pageable.ofSize(5));
+    }
+    @GetMapping("/getAllBooksByGenre={genre}")
+    public List<BookDetails> getBooksByGenre(@PathVariable("genre") String genre) {
+        return  bookDetailService.getBooksByGenre(genre, Pageable.ofSize(5));
     }
 
 

@@ -1,7 +1,10 @@
-package com.io.collab.libraryManagementSystem.service;
+package com.io.collab.libraryManagementSystem.service.book;
 
 import com.io.collab.libraryManagementSystem.model.BookDetails;
+import com.io.collab.libraryManagementSystem.model.UserDetails;
 import com.io.collab.libraryManagementSystem.repo.BookDetailsRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,4 +50,15 @@ public class BookDetailServiceImpl implements BookDetailsService {
         bookRepo.save(book);
         return book;
     }
+
+    @Override
+    public List<BookDetails> getBooksByGenre(String genre, Pageable page) {
+        return bookRepo.getBookDetailsByGenre(genre, page);
+    }
+
+    @Override
+    public List<BookDetails> getBooksByAuthor(String author, Pageable page) {
+        return bookRepo.getBookDetailsByAuthor(author,page);
+    }
+
 }

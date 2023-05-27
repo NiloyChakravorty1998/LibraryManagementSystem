@@ -1,9 +1,9 @@
 package com.io.collab.libraryManagementSystem.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -22,9 +22,10 @@ public class BookDetails {
     private String author;
     private String bookDescription;
     private String genre;
-    private String isAvailable;
+    private String isAvailable = "Available";
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private UserDetails userDetails;
 }
